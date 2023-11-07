@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_10_/utils/color_constant/color_constant.dart';
 import 'package:flutter_application_10_/utils/image_constant/image_constant.dart';
@@ -23,12 +24,26 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-     Stack(children: [
-             Container(
-              height: 415,
-              decoration: BoxDecoration(image: DecorationImage(
-                image: AssetImage(ImageConstant.HomeImage),fit: BoxFit.cover)
-                ),
+     Stack(
+     
+      children: [
+       CarouselSlider.builder(itemCount: 1, itemBuilder: (context, index, realIndex) => Container(child: Image.asset(ImageConstant.HomeImage),), 
+       options: CarouselOptions(
+        height: 415,
+        autoPlay: true,
+        viewportFraction: 1
+       )
+       ),
+
+
+
+
+        Container(//stack nte agathe container cut chyth builder il seperate kodth baaaki thazhe paste chyth container le img kalanj molil vkkya
+          height: 415,
+              
+              // decoration: BoxDecoration(image: DecorationImage(
+              //   image: AssetImage(ImageConstant.HomeImage),fit: BoxFit.cover)
+              //   ),
                 
               
       
@@ -53,9 +68,12 @@ class HomeScreen extends StatelessWidget {
                                 onTap: (){
                                   Navigator.push(context, MaterialPageRoute(builder:(context) => TvShowsScreen(), ));
                                 } ,
-                                child: Text("TV Shows",
-                                style: toptab, //instead of down lines,v can use 1 term for all
-                                // style: TextStyle(fontSize: 17,color: ColorConstant.PrimaryWhite),
+                                child: Positioned(
+                                  
+                                  child: Text("TV Shows",
+                                  style: toptab, //instead of down lines,v can use 1 term for all
+                                  // style: TextStyle(fontSize: 17,color: ColorConstant.PrimaryWhite),
+                                  ),
                                 ),
                               ),
                               GestureDetector(
@@ -91,6 +109,13 @@ class HomeScreen extends StatelessWidget {
       
               ),
             ),
+
+
+             
+
+
+
+
             //  Container(
             //   height: 415,
             //   decoration: BoxDecoration(
